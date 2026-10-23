@@ -1,0 +1,40 @@
+balance=1000
+PIN="2580"
+attempts = 0 
+c=0
+while attempts < 3:     
+    entered = input("PIN: ")     
+    attempts += 1     
+    if entered == PIN:         
+        print("Access granted") 
+        c=1        
+        break 
+    if attempts==3:
+        print("Card blocked")    
+if c==1:
+    while True:
+        menu=input('enter your menu(1,2,3,4)')
+        match menu:
+            case '1':
+                print(balance)
+            case '2':
+                deposit=int(input('Deposit:'))
+                if deposit<=0:
+                    print('invalid deposit')
+                else: 
+                    print('your balanse is:', deposit+balance)
+                    balance+=deposit
+            case '3':
+                withdraw=int(input('Withdraw:'))
+                if withdraw<0 or withdraw>balance:
+                    print('invalid withdraw')
+                else:
+                    print('your balance is:', balance-withdraw)
+                    balance-=withdraw
+            case '4':
+                print('Goodbye')
+                break
+            case _:
+                print("Invalid choice")
+
+
